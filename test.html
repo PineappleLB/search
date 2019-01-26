@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            *{
+                margin:0;
+                padding: 0;
+            }
+            body{
+                padding: 50px;
+            }
+            input{
+                width: 300px;
+            }
+            ul{
+                width: 300px;
+                border: 1px solid #FF69B4;
+                display: none;
+            }
+            li{
+                list-style: none;
+            }
+            li a:hover{
+                color: hotpink;
+                
+            }
+        </style>
+		<script type="text/javascript" src="./jquery-2.1.0.js"></script>
+    </head>
+    
+    <body>
+        <input type="text" id="q" />
+        <ul id="ul1"></ul>
+        <script type="text/javascript">
+            function baidudata(data){
+                var oUl=document.getElementById('ul1')
+                var html='';
+                if(data.s.length){
+                    oUl.style.display = 'block';
+                    for(var i=0;i<data.s.length;i++){
+                        html+='<li><a href="https://www.baidu.com/s?&wd='+data.s[i]+'">'+data.s[i]+'</a></li>'
+                    }
+                    oUl.innerHTML=html;
+                }else{
+                    oUl.style.display='none'
+                }
+            }
+            window.onload=function(){
+                var oQ=document.getElementById('q')
+                var oUl=document.getElementById('ul1')
+                oQ.onkeyup=function(){
+                    if(this.value !=""){
+                        var oScript=document.createElement('script')    
+                        oScript.src='https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/?wd='+this.value+'&cb=baidudata'
+                        document.body.appendChild(oScript)
+                    }else{
+                        oUl.style.display='none'
+                    }
+                }
+				let search = "菠萝"
+				$.ajax({
+				    type: "get",
+				    async:true,
+				    url: "/api/s?&wd=" + encodeURI(search),
+				    dataType: "html",
+				    success: function(data){
+						let left_content = $(data).find("#container #content_left");
+						document.body.innerHTML = left_content[0].innerHTML;
+				        console.log(data)
+				        var str = JSON.stringify(data);
+				        console.log(str);
+				        // alert(str);
+				    },
+				    error: function (e) {
+				        alert("error");
+				    }
+				})
+            }
+        </script>
+    </body>
+</html>

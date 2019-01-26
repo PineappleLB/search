@@ -1,0 +1,33 @@
+$.ajax({
+    type: "get",
+    async:true,
+    url: "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=%E8%8F%A0%E8%90%9D&cb=jQuery1102",
+    //url:'http://localhost:8080/swj_salary/userInfo/jsonp.do',
+    dataType: "jsonp",
+    jsonpCallback:"jQuery1102",            
+    success: function(data){
+
+    var str = JSON.stringify(data); 
+    console.log(str);
+    alert(str);
+    },
+    error: function (e) {
+        alert("error");
+    }
+});
+let search = "菠萝"
+$.ajax({
+    type: "get",
+    async:true,
+    url: "https://www.baidu.com/s?&wd=" + encodeURI(search),
+    dataType: "html",    
+    success: function(data){
+        console.log(data)
+        var str = JSON.stringify(data);
+        console.log(str);
+        // alert(str);
+    },
+    error: function (e) {
+        alert("error");
+    }
+})
