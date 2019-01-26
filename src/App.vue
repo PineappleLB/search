@@ -170,6 +170,7 @@ export default {
 #pagination{
   width: 600px;
   margin: 0 auto;
+  margin-bottom: 80px;
 }
 #pagination .page-button{
   text-align: left;
