@@ -53,7 +53,6 @@ export default {
   },
   methods: {
     changePage(incr){
-      console.log(1)
       if(!this.keyWords){
         document.getElementById("content").innerHTML = "";
         this.hasData = false;
@@ -91,7 +90,6 @@ export default {
       this.search(item.value)
     },
     querySearch(queryString, cb) {
-      console.log(queryString);
       this.keyWords = queryString;
       this.$jsonp(
         `https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/?wd=${queryString}`,
