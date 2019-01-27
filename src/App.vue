@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="head">
-      <h1>小度搜索</h1>
+      <h1><a href="https://github.com/PineappleLB/search" target="_blank">小度搜索</a></h1>
     </div>
     <div id="search">
       <el-row>
@@ -123,6 +123,10 @@ export default {
   width: 800px;
   margin: 0 auto;
   margin-top: 40px;
+}
+#app #head a{
+  text-decoration: none;
+  
 }
 .el-input__inner {
   text-align: center;
